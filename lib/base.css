@@ -1,0 +1,29 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+        Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: #4f7cac;
+    --lightBlue: #91e5f6;
+    --orange: #ffc700;
+    --pink: #e75a7c;
+    --mobile-width: 324px;
+    --mid-width: 768px;
+    --desktop-width: 1024px;
+    --font-family-type: "Courier New", Courier, monospace;
+    --white: ;
+
+}
