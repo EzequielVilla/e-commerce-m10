@@ -14,4 +14,3 @@ const Item: NextPage = () => {
 };
 
 export default Item;
-//

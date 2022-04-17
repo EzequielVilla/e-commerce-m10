@@ -1,8 +1,8 @@
 import { Layout } from "components/layout";
-import { NextPage } from "next";
-import { SearcherColumn } from "ui/searcher";
-
 import { ShowItem } from "components/showItem";
+import { NextPage } from "next";
+import { useEffect, useState } from "react";
+import { SearcherColumn } from "ui/searcher";
 
 const Id: NextPage = ({ data }: any) => {
   return (
@@ -15,7 +15,7 @@ const Id: NextPage = ({ data }: any) => {
 export async function getStaticPaths() {
   const res = await fetch(`https://m9-desafio.vercel.app/api/products`);
   const data = await res.json();
-  const hits = data?.result?.hits;
+  const hits = data.result.hits;
 
   return {
     paths: hits.map((item: any) => {
@@ -34,7 +34,7 @@ export async function getStaticProps(context: any) {
   const res = await fetch(`https://m9-desafio.vercel.app/api/products/${id}`);
   const data = await res.json();
   return {
-    props: { data },
+    props: { data }, // will be passed to the page component as props
   };
 }
 

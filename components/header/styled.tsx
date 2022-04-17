@@ -63,4 +63,3 @@ export const SearchBar = styled.div`
     display: none;
   }
 ` as any;
-//SearchBar va a tener que ser un form hook

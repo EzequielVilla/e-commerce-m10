@@ -12,7 +12,6 @@ export function OutstandingProducts() {
     return b["Total units sold"] - a["Total units sold"];
   });
   const clickHandler = (objectID: string) => {
-    // window.alert("Redirigiendo");
     router.push(`/item/${objectID}`);
   };
   return (

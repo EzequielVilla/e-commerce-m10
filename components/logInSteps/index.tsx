@@ -19,8 +19,6 @@ export function LogInSteps() {
   const { email, setEmail } = useEmail();
   const { setCode } = useCode(email);
 
-  // console.log({ email, data }, "en el componente");
-
   const onSubmitEmail = (data: any) => {
     setEmail(data.email);
     // clean the input for the code.
@@ -71,6 +69,5 @@ export function LogInSteps() {
         </Root>
       )}
     </>
-    // </Root>
   );
 }
