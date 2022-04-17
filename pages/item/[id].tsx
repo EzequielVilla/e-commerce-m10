@@ -5,7 +5,6 @@ import { SearcherColumn } from "ui/searcher";
 import { ShowItem } from "components/showItem";
 
 const Id: NextPage = ({ data }: any) => {
-  // export default function Item({ q }: any) {
   return (
     <Layout>
       <SearcherColumn />
@@ -35,7 +34,7 @@ export async function getStaticProps(context: any) {
   const res = await fetch(`https://m9-desafio.vercel.app/api/products/${id}`);
   const data = await res.json();
   return {
-    props: { data }, // will be passed to the page component as props
+    props: { data },
   };
 }
 

@@ -24,10 +24,6 @@ export function Header() {
   const setLogged = useLogOut();
   const router = useRouter();
 
-  // useEffect(() => {
-  //   if (token) setLogged(true);
-  //   else setLogged(false);
-  // }, [token]);
   const logOutHandler = () => {
     setLogged(false);
   };

@@ -103,11 +103,9 @@ export const useCheckStatusOrder = () => {
   const [status, setStatus] = useState<boolean>(false);
   const [orderId, setOrderId] = useState<string>();
   const router = useRouter();
-  // const { orderId } = useBuy();
 
   const { data, error } = useSWR(
     orderId ? [`order/${orderId}`] : null,
-    // orderId ? [`order/:${orderId}`] : null,
     getConfig,
     { refreshInterval: 2000, revalidateOnFocus: true }
   );
