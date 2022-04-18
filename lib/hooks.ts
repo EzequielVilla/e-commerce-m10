@@ -208,6 +208,7 @@ export const useUpdateProfile = () => {
   const [inputData, setInputData] = useState<ProfileInput>();
   const { setTokenAction, token } = useToken();
   const { setEmailAction, email } = useEmailStorage();
+  const router = useRouter();
 
   const patchInfo = { email, other: inputData };
   const { data, error } = useSWR(
@@ -223,7 +224,10 @@ export const useUpdateProfile = () => {
 
   useEffect(() => {
     if (!data) return;
-    if (data.upgraded) window.alert("Perfil actualizado");
+    if (data.upgraded) {
+      window.alert("Perfil actualizado");
+      router.push("/");
+    }
   }, [data]);
   return { setInputData };
 };
