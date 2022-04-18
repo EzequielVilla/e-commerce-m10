@@ -222,6 +222,7 @@ export const useUpdateProfile = () => {
   }, []);
 
   useEffect(() => {
+    if (!data) return;
     if (data.upgraded) window.alert("Perfil actualizado");
   }, [data]);
   return { setInputData };
