@@ -27,12 +27,6 @@ export function ShowItem({ data }: any) {
     }
   }, [data]);
 
-  // const imagen = data.result.Images[0].url;
-  // const description = data.result.Description;
-  // const name = data.result.Name;
-  // const cost = data.result["Unit cost"];
-  // const productId = data.result.objectID;
-
   const buyHandler = () => {
     setProductId(productID);
     setBuy(true);

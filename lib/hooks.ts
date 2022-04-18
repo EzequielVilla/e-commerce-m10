@@ -90,8 +90,6 @@ export const useBuy = () => {
 
   useEffect(() => {
     if (data) {
-      console.log({ dataBuy: data });
-
       setOrderId(data.orderId);
       window.open(`${data.redirectTo}`, "_blank");
     }
@@ -222,8 +220,9 @@ export const useUpdateProfile = () => {
     setTokenAction("get");
     setEmailAction("get");
   }, []);
+
   useEffect(() => {
-    // console.log({ data });
-  }, []);
+    if (data.upgraded) window.alert("Perfil actualizado");
+  }, [data]);
   return { setInputData };
 };

@@ -20,7 +20,6 @@ export function ShowSearch() {
       setQ(q);
     }
   }, [q]);
-  console.log({ data });
 
   const nextPageHandler = () => {
     setAdd(true);

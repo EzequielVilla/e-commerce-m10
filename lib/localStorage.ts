@@ -14,8 +14,6 @@ export const useToken = () => {
     }
     if (action == "clean") localStorage.setItem("token", JSON.stringify(""));
     if (action == "set") {
-      console.log("SET");
-
       localStorage.setItem("token", JSON.stringify(t));
     }
   }, [action]);

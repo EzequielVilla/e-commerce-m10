@@ -13,7 +13,6 @@ const fetchApi = async (direction: string, config: RequestOptions) => {
   const fullConfig = {
     ...config,
   };
-  console.log({ fullConfig, url });
 
   const res = await fetch(url, fullConfig);
 
@@ -52,7 +51,7 @@ export const patchConfig = async (
   token?: string
 ) => {
   return await fetchApi(direction, {
-    method: "patch",
+    method: "PATCH",
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json",
