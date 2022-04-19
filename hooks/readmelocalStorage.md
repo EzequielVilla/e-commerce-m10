@@ -55,4 +55,4 @@ type Action = "get" | "clean" | "set";
   }
 ```
 
-The same works for useEmailStorage() instead seToken()
+The same works for useEmailStorage() instead useToken()
