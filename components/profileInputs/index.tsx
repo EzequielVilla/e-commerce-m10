@@ -5,6 +5,7 @@ import { PrimaryButton } from "ui/buttons";
 import { InputWithLabel } from "ui/inputs";
 import { Subtitle, TinyText } from "ui/text";
 import { Root, MarginTop } from "./styled";
+import CircularProgress from "@mui/material/CircularProgress";
 
 interface ProfileInput {
   direction: string;
@@ -18,8 +19,9 @@ export function ProfileInputs() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { setInputData } = useUpdateProfile();
+  const { setInputData, isLoading, setIsLoading } = useUpdateProfile();
   const onSubmitHandler = (data: any) => {
+    setIsLoading(true);
     setInputData(data);
   };
   return (
@@ -52,7 +54,9 @@ export function ProfileInputs() {
           ></InputWithLabel>
         </MarginTop>
         <MarginTop>
-          <PrimaryButton type="submit">Guardar</PrimaryButton>
+          <PrimaryButton type="submit">
+            {isLoading ? <CircularProgress /> : <>Guardar</>}{" "}
+          </PrimaryButton>
         </MarginTop>
       </form>
     </Root>
