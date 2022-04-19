@@ -1,4 +1,4 @@
-import { useMe } from "lib/hooks";
+import { useMe } from "hooks/hooks";
 import { Searcher } from "ui/searcher";
 import { Title } from "ui/text";
 import { Root } from "./styled";

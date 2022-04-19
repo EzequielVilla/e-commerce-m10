@@ -1,4 +1,4 @@
-import { useGetAllProducts } from "lib/hooks";
+import { useGetAllProducts } from "hooks/hooks";
 import { StyledCardContent, StyledCardMedia } from "ui/card";
 import { Subtitle, Text } from "ui/text";
 import { Card, Products, Root } from "./styled";

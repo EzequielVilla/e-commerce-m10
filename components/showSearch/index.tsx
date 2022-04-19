@@ -2,7 +2,7 @@ import {
   useCheckStatusOrder,
   useGetAllProducts,
   useGetSearch,
-} from "lib/hooks";
+} from "hooks/hooks";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { StyledCardMedia, StyledCardContent } from "ui/card";

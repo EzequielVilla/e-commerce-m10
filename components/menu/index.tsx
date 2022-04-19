@@ -9,7 +9,7 @@ import { MenuContainer, StyledBurger } from "./styled";
 import { MenuRoot } from "./styled";
 import router from "next/router";
 import Link from "next/link";
-import { useIsLogged, useLogOut } from "lib/hooks";
+import { useIsLogged, useLogOut } from "hooks/hooks";
 
 export default function BurgerMenu() {
   const [anchorEl, setAnchorEl] = useState(null);

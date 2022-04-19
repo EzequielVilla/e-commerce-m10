@@ -1,7 +1,7 @@
 import { InputField } from "components/headerInputField";
 import BurgerMenu from "components/menu";
-import { useIsLogged, useLogOut } from "lib/hooks";
-import {} from "lib/localStorage";
+import { useIsLogged, useLogOut } from "hooks/hooks";
+import {} from "hooks/localStorage";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { LogginButton, SearchButton, SearchHeaderButton } from "ui/buttons";

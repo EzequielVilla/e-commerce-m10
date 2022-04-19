@@ -1,4 +1,4 @@
-import { useBuy, useCheckStatusOrder } from "lib/hooks";
+import { useBuy, useCheckStatusOrder } from "hooks/hooks";
 import { useEffect, useState } from "react";
 import { BuyButton } from "ui/buttons";
 import { StyledCardMedia } from "ui/card";

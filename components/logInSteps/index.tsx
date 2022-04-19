@@ -1,4 +1,4 @@
-import { useEmail, useCode } from "lib/hooks";
+import { useEmail, useCode } from "hooks/hooks";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
