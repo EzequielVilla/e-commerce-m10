@@ -7,7 +7,7 @@ type Action = "get" | "clean" | "set";
 - get: put the value of the hook (token or email) in the hook where is called. Example:
 
 ```ts
-  export const = useExample = () =>{
+  export const = useGetExample = () =>{
     const { token, setTokenAction } = useToken();
 
     console.log(token) //token here is undefined
@@ -24,7 +24,7 @@ type Action = "get" | "clean" | "set";
 - set: prepare the hook to recieve a string and save it in localstorage. Example:
 
 ```ts
-  export const = useExample = () =>{
+  export const = useSetExample = () =>{
     const {token, setTokenAction,setToken } = useToken();
 
     //data come from another part of the code, an API call of example.
@@ -42,7 +42,7 @@ type Action = "get" | "clean" | "set";
 - clean: delete the values saved in the item. In this case might be "email" or "token"
 
 ```ts
-  export const = useExample = () =>{
+  export const = useCleanExample = () =>{
     const {token, setTokenAction } = useToken();
 
     useEffect(()=>{
