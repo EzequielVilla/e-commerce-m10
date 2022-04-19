@@ -39,7 +39,7 @@ type Action = "get" | "clean" | "set";
   }
 ```
 
--clean: delete the values saved in the item. In this case might be "email" or "token"
+- clean: delete the values saved in the item. In this case might be "email" or "token"
 
 ```ts
   export const = useExample = () =>{
