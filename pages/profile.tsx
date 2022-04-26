@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
-import { LayoutWithoutSearch } from "components/layoutWitoutSearch";
+import { LayoutWithoutSearch } from "components/layout-without-search";
 
-import { ProfileInputs } from "components/profileInputs";
+import { ProfileInputs } from "components/profile-inputs";
 
 const Profile: NextPage = () => {
   return (

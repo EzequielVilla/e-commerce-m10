@@ -1,13 +1,12 @@
-import { InputField } from "components/headerInputField";
+import { InputField } from "components/header-input-field";
 import BurgerMenu from "components/menu";
-import { useIsLogged, useLogOut } from "hooks/hooks";
-import {} from "hooks/localStorage";
+import { useIsLogged, useLogOut } from "hooks";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { LogginButton, SearchButton, SearchHeaderButton } from "ui/buttons";
 import { BurguerOption, ShoppingCart } from "ui/icons";
 import { HeaderInput } from "ui/inputs";
-import { SearcherHeader } from "ui/searcher";
+import { SearcherHeader } from "components/searcher";
 import { Subtitle } from "ui/text";
 
 import {

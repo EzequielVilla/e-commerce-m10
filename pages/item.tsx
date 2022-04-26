@@ -1,10 +1,10 @@
 import { Layout } from "components/layout";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import { SearcherColumn } from "ui/searcher";
+import { SearcherColumn } from "components/searcher";
 
 const Item: NextPage = () => {
-  const router = useRouter();
+  // const router = useRouter();
 
   return (
     <Layout>

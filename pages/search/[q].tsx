@@ -1,8 +1,8 @@
 import { Layout } from "components/layout";
 import { NextPage } from "next";
-import { SearcherColumn } from "ui/searcher";
+import { SearcherColumn } from "components/searcher";
 
-import { ShowSearch } from "components/showSearch";
+import { ShowSearch } from "components/show-search";
 
 const Query: NextPage = () => {
   return (

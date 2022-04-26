@@ -1,7 +1,7 @@
 import { GridContainer, Root, StyledFooterLink } from "./styled";
 import { Body, Text } from "ui/text";
 import { InstagramSVG, TwitterSVG } from "ui/icons";
-import { useIsLogged, useLogOut, useMe } from "hooks/hooks";
+import { useIsLogged, useLogOut, useMe } from "hooks";
 
 export function Footer() {
   const logged = useIsLogged();

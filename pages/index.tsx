@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 
-import { LayoutWithoutSearch } from "components/layoutWitoutSearch";
-import { HomeSearch } from "components/homeSearch";
-import { OutstandingProducts } from "components/outstandingProducts";
+import { LayoutWithoutSearch } from "components/layout-without-search";
+import { HomeSearch } from "components/home-search";
+import { OutstandingProducts } from "components/outstanding-products";
 
 const Home: NextPage = () => {
   return (

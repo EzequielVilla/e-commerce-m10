@@ -1,8 +1,8 @@
 import { Layout } from "components/layout";
-import { ShowItem } from "components/showItem";
+import { ShowItem } from "components/show-item";
 import { NextPage } from "next";
 import { useEffect, useState } from "react";
-import { SearcherColumn } from "ui/searcher";
+import { SearcherColumn } from "components/searcher";
 
 const Id: NextPage = ({ data }: any) => {
   return (
