@@ -15,7 +15,7 @@ interface ItemData {
       Images: {
         url: string;
       }[];
-      objectId: string;
+      objectID: string;
     };
   };
 }
@@ -31,7 +31,7 @@ export function ShowItem({ data }: ItemData) {
           url: "",
         },
       ],
-      objectId: "",
+      objectID: "",
     },
   };
   if (data?.result == undefined) null;
@@ -42,7 +42,7 @@ export function ShowItem({ data }: ItemData) {
     Description: description,
     Name: name,
     ["Unit cost"]: cost,
-    objectId,
+    objectID,
     Images,
   } = obj.result;
 
@@ -50,7 +50,7 @@ export function ShowItem({ data }: ItemData) {
   const { status } = useCheckStatusOrder();
 
   const buyHandler = () => {
-    setProductId(objectId);
+    setProductId(objectID);
     setBuy(true);
   };
   return (

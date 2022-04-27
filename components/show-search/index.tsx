@@ -98,7 +98,6 @@ export function ShowSearch() {
         )}
       </Products>
       <NextPrev>
-        {console.log({ min, max })}
         {!max && !min ? (
           <>
             <Prev>

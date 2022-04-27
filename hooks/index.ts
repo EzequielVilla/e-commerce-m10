@@ -74,8 +74,8 @@ export const useBuy = () => {
   const [productId, setProductId] = useState<string>();
   const [token, setToken] = useState();
   const { setOrderId } = useCheckStatusOrder();
-
   const router = useRouter();
+
   useEffect(() => {
     setToken(JSON.parse(localStorage.getItem("token") || ""));
     if (buy && !token) router.push("/logIn");
@@ -153,6 +153,9 @@ export const useIsLogged = () => {
 
   // const { action, setTokenAction, token: storageToken } = useToken();
   useEffect(() => {
+    if (localStorage.getItem("token") === null) {
+      localStorage.setItem("token", JSON.stringify(""));
+    }
     const token = JSON.parse(localStorage.getItem("token") || "");
     const exist = token ? true : false;
 
