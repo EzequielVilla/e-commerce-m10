@@ -135,7 +135,7 @@ export const useCode = () => {
   useEffect(() => {
     if (data) {
       localStorage.setItem("token", JSON.stringify(data.token));
-      localStorage.setItem("email", JSON.stringify(data.email));
+      localStorage.setItem("email", JSON.stringify(userEmail));
       router.push("/");
     }
   }, [data]);
@@ -217,6 +217,12 @@ export const useUpdateProfile = () => {
   );
 
   useEffect(() => {
+    if (localStorage.getItem("email") === null) {
+      localStorage.setItem("email", JSON.stringify(""));
+    }
+    if (localStorage.getItem("token") === null) {
+      localStorage.setItem("token", JSON.stringify(""));
+    }
     setToken(JSON.parse(localStorage.getItem("token") || ""));
     setEmail(JSON.parse(localStorage.getItem("email") || ""));
   }, []);
