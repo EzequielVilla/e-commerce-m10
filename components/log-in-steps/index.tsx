@@ -1,6 +1,6 @@
-import { useSendCodeToEmail, useCode } from "hooks";
+import { checkCode, sendCode } from "lib/api";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { useForm } from "react-hook-form";
 
@@ -16,17 +16,22 @@ export function LogInSteps() {
     reset,
     formState: { errors },
   } = useForm();
-  const { email, setEmail } = useSendCodeToEmail();
-  const { setCode, setUserEmail } = useCode();
+  const [email, setEmail] = useState<string>("");
+  const router = useRouter();
+  // const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const onSubmitEmail = (data: any) => {
     setEmail(data.email);
-    setUserEmail(data.email);
+    sendCode(data.email);
     // clean the input for the code.
     reset();
   };
-  const onSubmitCode = (data: any) => {
-    setCode(data.code);
+  const onSubmitCode = async (data: any) => {
+    const res = await checkCode(email, data.code);
+    if (!res) return;
+    localStorage.setItem("token", JSON.stringify(res.token));
+    localStorage.setItem("email", JSON.stringify(email));
+    router.push("/");
   };
   return (
     <>

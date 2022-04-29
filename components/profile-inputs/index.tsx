@@ -1,11 +1,12 @@
-import { useUpdateProfile } from "hooks";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { PrimaryButton } from "ui/buttons";
 import { InputWithLabel } from "ui/inputs";
-import { Subtitle, TinyText } from "ui/text";
+import { Subtitle } from "ui/text";
 import { Root, MarginTop } from "./styled";
 import CircularProgress from "@mui/material/CircularProgress";
+import { updateProfileData } from "lib/api";
+import { useRouter } from "next/router";
 
 interface ProfileInput {
   direction: string;
@@ -19,10 +20,16 @@ export function ProfileInputs() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { setInputData, isLoading, setIsLoading } = useUpdateProfile();
-  const onSubmitHandler = (data: any) => {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const onSubmitHandler = async (data: any) => {
     setIsLoading(true);
-    setInputData(data);
+    const res = await updateProfileData(data);
+    if (!res) return;
+    if (res.upgraded) {
+      window.alert("Perfil actualizado");
+      router.push("/");
+    }
   };
   return (
     <Root>

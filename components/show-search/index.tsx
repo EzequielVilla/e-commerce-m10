@@ -1,9 +1,4 @@
-import {
-  useCheckStatusOrder,
-  useGetAllProducts,
-  useGetSearch,
-  usePagination,
-} from "hooks";
+import { useCheckStatusOrder, useGetAllProducts, useGetSearch } from "hooks";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { StyledCardMedia, StyledCardContent } from "ui/card";
@@ -11,63 +6,66 @@ import { Subtitle, BodyBold, Text } from "ui/text";
 import { Card, Products, Root, NextPrev, Prev, Next } from "./styled";
 import Skeleton from "@mui/material/Skeleton";
 
+interface PaginationData {
+  offset: number;
+  total: number;
+}
+
 export function ShowSearch() {
   const router = useRouter();
   const q = router.query.q as string;
-  const { data, setQ, searchData, setSearchData } = useGetSearch();
-  const { page, total } = searchData;
-  const [offset, setOffset] = useState<number>(0);
-  const [max, setMax] = useState<boolean>(false);
-  const [min, setMin] = useState<boolean>(true);
-  const [add, setAdd] = useState<boolean>(false);
+  const { data, setQ, setOffset } = useGetSearch();
+  const [pagination, setPagination] = useState<PaginationData>({
+    offset: 0,
+    total: 0,
+  });
+  function getMax(): boolean {
+    if (
+      pagination.offset + 1 == pagination.total ||
+      pagination.offset + 2 == pagination.total
+    ) {
+      return true;
+    } else return false;
+  }
+  function getMin(): boolean {
+    if (pagination.offset == 0) return true;
+    else return false;
+  }
+  const max = getMax();
+  const min = getMin();
 
-  useEffect(() => {
-    if (offset + 1 == total || offset + 2 == total) setMax(true);
-    else setMax(false);
-    if (offset == 0) setMin(true);
-    else setMin(false);
-  }, [offset]);
-  //reset the values when the query changes
   useEffect(() => {
     if (q) {
       setQ(q);
-      setMax(false);
-      setMin(true);
-      setOffset(0);
+      setPagination({ ...pagination, offset: 0 });
     }
   }, [q]);
+
+  //load the initial data
   useEffect(() => {
-    if (add) {
-      setSearchData({
-        total,
-        page: page + 1,
-        offset,
-      });
-    } else if (!add) {
-      setSearchData({
-        total,
-        page: page - 1,
-        offset,
-      });
-    }
-  }, [add, offset]);
+    if (data) setPagination({ ...pagination, total: data.pagination.total });
+  }, [data]);
+
+  //change the offset for the fetch
+  useEffect(() => {
+    setOffset(pagination.offset);
+  }, [pagination.offset]);
 
   const nextPageHandler = () => {
-    setAdd(true);
-    setOffset(offset + 2);
+    setPagination({ ...pagination, offset: pagination.offset + 2 });
   };
   const previousPageHandler = () => {
-    setAdd(false);
-    setOffset(offset - 2);
+    setPagination({ ...pagination, offset: pagination.offset - 2 });
   };
 
   const clickHandler = (objectID: string) => {
     router.push(`/item/${objectID}`);
   };
+
   return (
     <Root>
-      {total ? (
-        <Subtitle>Total: {total}</Subtitle>
+      {pagination.total ? (
+        <Subtitle>Total: {pagination.total}</Subtitle>
       ) : (
         <Subtitle>Total:0</Subtitle>
       )}
@@ -98,6 +96,7 @@ export function ShowSearch() {
         )}
       </Products>
       <NextPrev>
+        {/* {console.log({ max: pagination.max, min: pagination.min }, "in html")} */}
         {!max && !min ? (
           <>
             <Prev>

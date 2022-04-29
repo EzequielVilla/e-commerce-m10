@@ -1,10 +1,12 @@
-import { useBuy, useCheckStatusOrder } from "hooks";
+import { useCheckStatusOrder } from "hooks";
 import { useEffect, useState } from "react";
 import { BuyButton } from "ui/buttons";
 import { StyledCardMedia } from "ui/card";
 import { Subtitle, Text, Body } from "ui/text";
 import { Root, Info, Imagen, Name, Cost, Buy, Description } from "./styled";
 import CircularProgress from "@mui/material/CircularProgress";
+import { buyItem } from "lib/api";
+import { useRouter } from "next/router";
 
 interface ItemData {
   data: {
@@ -46,12 +48,16 @@ export function ShowItem({ data }: ItemData) {
     Images,
   } = obj.result;
 
-  const { buy, setBuy, setProductId } = useBuy();
-  const { status } = useCheckStatusOrder();
+  const router = useRouter();
+  const [waiting, setWaiting] = useState(false);
+  const { status, setOrderId } = useCheckStatusOrder();
 
-  const buyHandler = () => {
-    setProductId(objectID);
-    setBuy(true);
+  const buyHandler = async () => {
+    setWaiting(true);
+    const res = await buyItem(objectID);
+    if (res.error) router.push("/logIn");
+    setOrderId(res.orderId);
+    window.open(`${res.redirectTo}`, "_blank");
   };
   return (
     <Root>
@@ -60,9 +66,9 @@ export function ShowItem({ data }: ItemData) {
         <Name>{name}</Name>
         <Cost>${cost}</Cost>
         <Buy onClick={buyHandler}>
-          {!buy ? (
+          {!waiting ? (
             <>Comprar</>
-          ) : buy && !status ? (
+          ) : waiting && !status ? (
             <CircularProgress />
           ) : (
             <>Comprar</>
