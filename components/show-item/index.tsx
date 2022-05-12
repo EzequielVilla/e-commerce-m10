@@ -50,7 +50,8 @@ export function ShowItem({ data }: ItemData) {
 
   const router = useRouter();
   const [waiting, setWaiting] = useState(false);
-  const { status, setOrderId } = useCheckStatusOrder();
+  const { setOrderId, status } = useCheckStatusOrder();
+  checkIfPaid();
 
   const buyHandler = async () => {
     setWaiting(true);
@@ -59,6 +60,15 @@ export function ShowItem({ data }: ItemData) {
     setOrderId(res.orderId);
     window.open(`${res.redirectTo}`, "_blank");
   };
+
+  function checkIfPaid() {
+    if (status) {
+      //Este alert se abre dos veces, cambiarlo por un modal y hacer el routerpush
+      //en el clickHandler de ese modal
+      router.push("/");
+      window.alert("Gracias por su compra");
+    }
+  }
   return (
     <Root>
       <Imagen component="img" image={Images[0].url} />

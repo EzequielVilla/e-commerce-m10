@@ -34,9 +34,7 @@ export const useGetSearch = () => {
   };
 };
 export const useCheckStatusOrder = () => {
-  const [status, setStatus] = useState<boolean>(false);
   const [orderId, setOrderId] = useState<string>();
-  const router = useRouter();
 
   const { data, error } = useSWR(
     orderId ? [`order/${orderId}`] : null,
@@ -44,24 +42,12 @@ export const useCheckStatusOrder = () => {
     { refreshInterval: 2000, revalidateOnFocus: false }
   );
 
-  useEffect(() => {
-    if (!data) return;
-    setStatus(data.data.status);
-  }, [data]);
-
-  useEffect(() => {
-    if (status) {
-      router.push("/");
-      window.alert("Gracias por su compra");
-    }
-  }, [status]);
-  return { status, setOrderId };
+  return { setOrderId, status: data?.data?.status };
 };
 
 export const useIsLogged = () => {
   const [logged, setLogged] = useState<boolean>();
 
-  // const { action, setTokenAction, token: storageToken } = useToken();
   useEffect(() => {
     if (localStorage.getItem("token") === null) {
       localStorage.setItem("token", JSON.stringify(""));
@@ -91,18 +77,4 @@ export const useLogOut = () => {
     }
   }, [logged]);
   return setLogged;
-};
-
-export const useMe = () => {
-  const [email, setEmail] = useState<string>();
-  const { data, error } = useSWR(email ? ["me"] : null, getConfig, {
-    revalidateOnFocus: false,
-  });
-  useEffect(() => {
-    if (data?.email) {
-      setEmail(data.email);
-    }
-  }, [data]);
-
-  return { email };
 };
