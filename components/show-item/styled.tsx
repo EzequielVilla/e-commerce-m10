@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { StyledCardMedia } from "ui/card";
 import { Subtitle, Text, Body } from "ui/text";
 import { BuyButton } from "ui/buttons";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
 
 export const Root = styled.div`
   display: flex;
@@ -65,3 +67,25 @@ export const Description = styled(Body)`
   width: 300px;
   grid-row: 4 / 4;
 `;
+
+export const BoxModalContainer = styled(Box)`
+  width: 400px;
+  height: 300px;
+  border: 4px solid #000;
+  background: linear-gradient(0deg, var(--orange) 0%, var(--pink) 100%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
+`;
+export const ModalStyled = styled(Modal)`
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.3);
+`;
+export const ModalContainer = styled.div``;
