@@ -4,15 +4,17 @@ import useSWR from "swr";
 import useSWRImmutable from "swr/immutable";
 import { getConfig, patchConfig, postConfig } from "../lib/api";
 
+//Uso swr para que solo cargue los items destacados la primera vez que entra el user a la pagina.
 export const useGetAllProducts = (): Array<any> | undefined => {
   const { data, error } = useSWRImmutable(
     "/products",
     async () => await getConfig("products")
   );
 
-  if (data) return data.result.hits;
+  return data?.result?.hits;
 };
 
+//Uso swr para "cachear" la respuesta si el usuario va y viene con el offset.
 export const useGetSearch = () => {
   const [offset, setOffset] = useState<number>();
   const [q, setQ] = useState("");
@@ -33,18 +35,21 @@ export const useGetSearch = () => {
     setOffset,
   };
 };
+
+// Uso swr para hacer un refresh en intervalos de tiempo.
 export const useCheckStatusOrder = () => {
   const [orderId, setOrderId] = useState<string>();
 
   const { data, error } = useSWR(
     orderId ? [`order/${orderId}`] : null,
     getConfig,
-    { refreshInterval: 2000, revalidateOnFocus: false }
+    { refreshInterval: 2000, revalidateOnFocus: true }
   );
 
   return { setOrderId, status: data?.data?.status };
 };
 
+// abstraigo logica que se repite en varios componentes.
 export const useIsLogged = () => {
   const [logged, setLogged] = useState<boolean>();
 
@@ -62,6 +67,7 @@ export const useIsLogged = () => {
   return logged;
 };
 
+// abstraigo logica que se repite en varios componentes.
 export const useLogOut = () => {
   const [logged, setLogged] = useState<boolean>();
 

@@ -1,6 +1,6 @@
 import { checkCode, sendCode } from "lib/api";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { useForm } from "react-hook-form";
 
@@ -18,7 +18,6 @@ export function LogInSteps() {
   } = useForm();
   const [email, setEmail] = useState<string>("");
   const router = useRouter();
-  // const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const onSubmitEmail = (data: any) => {
     setEmail(data.email);

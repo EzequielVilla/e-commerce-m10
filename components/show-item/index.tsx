@@ -1,5 +1,5 @@
 import { useCheckStatusOrder } from "hooks";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BuyButton, LogginButton, SearchButton } from "ui/buttons";
 import { StyledCardMedia } from "ui/card";
 import { Subtitle, Text, Body } from "ui/text";
@@ -18,9 +18,6 @@ import {
 import CircularProgress from "@mui/material/CircularProgress";
 import { buyItem } from "lib/api";
 import { useRouter } from "next/router";
-import Modal from "@mui/material/Modal";
-import Box from "@mui/material/Box";
-import CSS from "csstype";
 
 interface ItemData {
   data: {

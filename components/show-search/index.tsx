@@ -1,4 +1,4 @@
-import { useCheckStatusOrder, useGetAllProducts, useGetSearch } from "hooks";
+import { useGetSearch } from "hooks";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { StyledCardMedia, StyledCardContent } from "ui/card";

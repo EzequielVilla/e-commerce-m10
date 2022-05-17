@@ -1,7 +1,7 @@
 import BurgerMenu from "components/menu";
 import { useIsLogged, useLogOut } from "hooks";
 import { useRouter } from "next/router";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Subtitle, Text } from "ui/text";
 
 import {
