@@ -85,7 +85,10 @@ export const HeaderInput = styled(TextField).attrs(() => ({
 export const PagesInput = styled(TextField).attrs((props) => ({
   autcomplete: "off",
   variant: "outlined",
-  placeholder: props.placeholder == "null" ? "" : props.placeholder || "Silla",
+  placeholder:
+    props.placeholder == "null"
+      ? ""
+      : props.placeholder || "Rug / Chair / Table",
 }))`
   width: 250px;
 
