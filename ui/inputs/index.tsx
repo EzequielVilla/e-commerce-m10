@@ -43,7 +43,7 @@ export const InputWithLabel = ({
 export const HeaderInput = styled(TextField).attrs(() => ({
   autcomplete: "off",
   variant: "outlined",
-  placeholder: "Silla",
+  placeholder: "Rug / Chair / Table",
 }))`
   width: 300px;
   .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
